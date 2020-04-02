@@ -30,7 +30,7 @@ export default class App extends Component {
     });
   };
 
-  ClearList = () => {
+  clearList = () => {
     this.setState({ items: [] });
   };
   handleDelete = id => {
@@ -62,7 +62,7 @@ export default class App extends Component {
             ></TodoInput>
             <TodoList
               items={this.state.items}
-              ClearList={this.ClearList}
+              clearList={this.clearList}
               handleDelete={this.handleDelete}
               handleEdit={this.handleEdit}
             ></TodoList>
