@@ -31,13 +31,22 @@ export default class App extends Component {
   };
 
   ClearList = () => {
-    console.log("clear list");
+    this.setState({ items: [] });
   };
   handleDelete = id => {
-    console.log("handle Delete");
+    const filteredItems = this.state.items.filter(item => item.id !== id);
+    this.setState({ items: filteredItems });
   };
   handleEdit = id => {
-    console.log(`handle edit ${id}`);
+    const filteredItems = this.state.items.filter(item => item.id !== id);
+    const selectedItem = this.state.items.find(item => item.id === id);
+
+    this.setState({
+      items: filteredItems,
+      item: selectedItem.title,
+      id: id,
+      editItem: true
+    });
   };
   render() {
     return (
@@ -48,7 +57,7 @@ export default class App extends Component {
             <TodoInput
               item={this.state.item}
               handleChange={this.handleChange}
-              handleSubmit={this.state.handleSubmit}
+              handleSubmit={this.handleSubmit}
               editItem={this.state.editItem}
             ></TodoInput>
             <TodoList
